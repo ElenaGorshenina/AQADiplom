@@ -8,24 +8,36 @@ import org.junit.jupiter.api.BeforeEach;
 import java.util.Locale;
 import java.util.Random;
 
+import static com.codeborne.selenide.Condition.exactText;
+
 @Data
 public class DataHelper {
     private Faker faker;
 
-//    @Value
-//    public static class PaymentByCard {
-//        private String numberCard;
-//    }
+    @Value
+    public static class NumberCardClass {
+        private String numberCard;
+    }
 
-//    public static PaymentByCard getNumberCardApproved() {
-//        return new PaymentByCard ("4444 4444 4444 4441");
-//    }
-//    public static NumberCard getNumberCardDeclined() {
-//        return new NumberCard ("4444 4444 4444 4442");
-//    }
+    public static NumberCardClass getNumberCardApproved() {
+        return new NumberCardClass("4444 4444 4444 4441");
+    }
+    public static NumberCardClass getNumberCardDeclined() {
+        return new NumberCardClass("4444 4444 4444 4442");
+    }
+    public static NumberCardClass getNumberCardSymbol() {
+        return new NumberCardClass("As!@");
+    }
+    public static NumberCardClass getNumberCardLessQuantity() {
+        return new NumberCardClass("4");
+    }
+    public static NumberCardClass getNumberCardMoreQuantity() {
+        return new NumberCardClass("4444 4444 4444 4442 4");
+    }
 
-    public static String getNumberCardApproved() {
-        return "4444 4444 4444 4441";
+    @Value
+    public static class CardownerClass {
+        private String cardowner;
     }
 
     @BeforeEach
@@ -33,44 +45,89 @@ public class DataHelper {
         faker = new Faker(new Locale("en"));
     }
 
-    private String cardowner = faker.name().firstName();
+    private String cardownerFaker = faker.name().firstName();
 
-    public String cardownerLessQuantity = "z";
-    public String cardownerMoreQuantity = "CardownerCardownerCard";
-    public String cardownerSymbol = "1,ю";
+//    public static CardownerClass getCardownerValid() {
+//        return new CardownerClass(cardownerFaker);
+//    }
+    public static CardownerClass getCardownerLessQuantity() {
+        return new CardownerClass("z");
+    }
+    public static CardownerClass getCardownerMoreQuantity() {
+        return new CardownerClass("CardownerCardownerCard");
+    }
+    public static CardownerClass getCardownerSymbol() {
+        return new CardownerClass("1,ю");
+    }
 
-    public static String monthVal() {
+    @Value
+    public static class MonthClass {
+        private String month;
+    }
+
+    public static MonthClass getMonthVal() {
         Random random = new Random();
         int rand = random.nextInt(12);
         String monthVal[] = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
-        return monthVal[rand];
+        return new MonthClass(monthVal[rand]);
     }
 
-    public static String monthZero = "00";
-    public String monthLessQuantity = "1";
-    public String monthMoreQuantity = "011";
-    public String monthSymbol = "s,";
+    public static MonthClass getMonthZero() {
+        return new MonthClass("00");
+    }
+    public static MonthClass getMonthLessQuantity() {
+        return new MonthClass("1");
+    }
+    public static MonthClass getMonthMoreQuantity() {
+        return new MonthClass("011");
+    }
+    public static MonthClass getMonthSymbol() {
+        return new MonthClass("s,");
+    }
 
-    public static String yearVal() {
+    @Value
+    public static class YearClass {
+        private String year;
+    }
+
+    public static YearClass getYearVal() {
         Random random = new Random();
         int rand = random.nextInt(4);
-        String monthVal[] = {"21", "22", "23", "24"};
-        return monthVal[rand];
+        String yearVal[] = {"21", "22", "23", "24"};
+        return new YearClass(yearVal[rand]);
+    }
+    public static YearClass getYearZero() {
+        return new YearClass("00");
+    }
+    public static YearClass getYearLessQuantity() {
+        return new YearClass("2");
+    }
+    public static YearClass getYearMoreQuantity() {
+        return new YearClass("022");
+    }
+    public static YearClass getYearSymbol() {
+        return new YearClass("w!");
     }
 
-    public String yearZero = "00";
-    public String yearLessQuantity = "2";
-    public String yearMoreQuantity = "022";
-    public String yearSymbol = "w!";
+    @Value
+    public static class CvcClass {
+        private String cvc;
+    }
 
-    public static String cvcVal() {
+    public static CvcClass getCvcVal() {
         Random random = new Random();
         int rand = random.nextInt(4);
-        String monthVal[] = {"121", "115", "243", "604"};
-        return monthVal[rand];
+        String cvcVal[] = {"121", "115", "243", "604"};
+        return new CvcClass(cvcVal[rand]);
     }
 
-    public String cvcLessQuantity = "2";
-    public String cvcMoreQuantity = "0001";
-    public String cvcSymbol = "r-";
+    public static CvcClass getCvcLessQuantity() {
+        return new CvcClass("5");
+    }
+    public static CvcClass getCvcMoreQuantity() {
+        return new CvcClass("0001");
+    }
+    public static CvcClass getCvcSymbol() {
+        return new CvcClass("r-");
+    }
 }
