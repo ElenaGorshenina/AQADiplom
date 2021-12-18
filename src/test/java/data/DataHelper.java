@@ -45,11 +45,11 @@ public class DataHelper {
         faker = new Faker(new Locale("en"));
     }
 
-    private String cardownerFaker = faker.name().firstName();
+    public static String getCardownerValid() {
+        Faker faker = new Faker(new Locale("en"));
+        return faker.name().firstName() + " " + faker.name().lastName();
+    }
 
-//    public static CardownerClass getCardownerValid() {
-//        return new CardownerClass(cardownerFaker);
-//    }
     public static CardownerClass getCardownerLessQuantity() {
         return new CardownerClass("z");
     }

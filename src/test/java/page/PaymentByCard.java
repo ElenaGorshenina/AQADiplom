@@ -14,15 +14,19 @@ import static data.DataHelper.*;
 
 @Data
 public class PaymentByCard {
-    private SelenideElement formPayment = $(byText("Оплата по карте")).shouldBe(Condition.visible);
-    private SelenideElement numberCard = $(By.cssSelector("input[placeholder='0000 0000 0000 0000']")).setValue(getNumberCard().getValue());
-    private SelenideElement month = $(By.cssSelector("input[placeholder='08']")).setValue(getMonth().getValue());
-    private SelenideElement year = $(By.cssSelector("input[placeholder='22']")).setValue(getYear().getValue());
-    private SelenideElement cardowner = $(By.xpath("//span[text()='Владелец']/..//input")).setValue(getCardowner().getValue());
-    private SelenideElement cvc = $(By.cssSelector("input[placeholder='999']")).setValue(getCvc().getValue());
+    private SelenideElement formPayment = $(byText("Оплата по карте"));
+    private SelenideElement numberCard = $(By.cssSelector("input[placeholder='0000 0000 0000 0000']"));
+    private SelenideElement month = $(By.cssSelector("input[placeholder='08']"));
+    private SelenideElement year = $(By.cssSelector("input[placeholder='22']"));
+    private SelenideElement cardowner = $(By.xpath("//span[text()='Владелец']/..//input"));
+    private SelenideElement cvc = $(By.cssSelector("input[placeholder='999']"));
     private SelenideElement button = $(By.cssSelector("[placeholder='Продолжить']"));
-    private SelenideElement approved = $(byText("Успешно")).shouldBe(appear);
-    private SelenideElement errorWindow = $(byText("Успешно")).shouldBe(appear);
+    private SelenideElement approved = $(byText("Успешно"));
+    private SelenideElement errorWindow = $(byText("Успешно"));
+
+    public PaymentByCard() {
+        formPayment.shouldBe(Condition.visible);
+    }
 
     private SelenideElement numberCardSub = $(By.cssSelector("[placeholder='0000 0000 0000 0000'] .input__sub"));
     private SelenideElement monthSub = $(By.cssSelector("[placeholder='08'] .input__sub"));

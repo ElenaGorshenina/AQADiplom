@@ -29,7 +29,7 @@ public class PaymentByCardTest {
         var paymentByCard = webService.paymentByCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
         var setMonth = DataHelper.getMonthVal();
-        //var setCardowner = DataHelper.getCardownerValid();
+        var setCardowner = DataHelper.getCardownerValid();
         var setCvc = DataHelper.getCvcVal();
         paymentByCard.click();
         paymentByCard.approved();
