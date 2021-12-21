@@ -8,8 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import java.util.Locale;
 import java.util.Random;
 
-import static com.codeborne.selenide.Condition.exactText;
-
 @Data
 public class DataHelper {
     private Faker faker;
@@ -35,99 +33,74 @@ public class DataHelper {
         return new NumberCardClass("4444 4444 4444 4442 4");
     }
 
-    @Value
-    public static class CardownerClass {
-        private String cardowner;
-    }
-
-    @BeforeEach
-    void setFaker() {
-        faker = new Faker(new Locale("en"));
-    }
-
-    public static String getCardownerValid() {
+     public static String getCardownerValid() {
         Faker faker = new Faker(new Locale("en"));
         return faker.name().firstName() + " " + faker.name().lastName();
     }
 
-    public static CardownerClass getCardownerLessQuantity() {
-        return new CardownerClass("z");
+    public static String getCardownerLessQuantity() {
+        return "z";
     }
-    public static CardownerClass getCardownerMoreQuantity() {
-        return new CardownerClass("CardownerCardownerCard");
+    public static String getCardownerMoreQuantity() {
+        return "CardownerCardownerCard";
     }
-    public static CardownerClass getCardownerSymbol() {
-        return new CardownerClass("1,ю");
-    }
-
-    @Value
-    public static class MonthClass {
-        private String month;
+    public static String getCardownerSymbol() {
+        return "1,ю";
     }
 
-    public static MonthClass getMonthVal() {
+    public static String getMonthVal() {
         Random random = new Random();
         int rand = random.nextInt(12);
         String monthVal[] = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
-        return new MonthClass(monthVal[rand]);
+        return monthVal[rand];
     }
 
-    public static MonthClass getMonthZero() {
-        return new MonthClass("00");
+    public static String getMonthZero() {
+        return "00";
     }
-    public static MonthClass getMonthLessQuantity() {
-        return new MonthClass("1");
+    public static String getMonthLessQuantity() {
+        return "1";
     }
-    public static MonthClass getMonthMoreQuantity() {
-        return new MonthClass("011");
+    public static String getMonthMoreQuantity() {
+        return "011";
     }
-    public static MonthClass getMonthSymbol() {
-        return new MonthClass("s,");
-    }
-
-    @Value
-    public static class YearClass {
-        private String year;
+    public static String getMonthSymbol() {
+        return "s,";
     }
 
-    public static YearClass getYearVal() {
+    public static String getYearVal() {
         Random random = new Random();
         int rand = random.nextInt(4);
         String yearVal[] = {"21", "22", "23", "24"};
-        return new YearClass(yearVal[rand]);
+        return yearVal[rand];
     }
-    public static YearClass getYearZero() {
-        return new YearClass("00");
+    public static String getYearZero() {
+        return "00";
     }
-    public static YearClass getYearLessQuantity() {
-        return new YearClass("2");
+    public static String getYearLessQuantity() {
+        return "2";
     }
-    public static YearClass getYearMoreQuantity() {
-        return new YearClass("022");
+    public static String getYearMoreQuantity() {
+        return "022";
     }
-    public static YearClass getYearSymbol() {
-        return new YearClass("w!");
-    }
-
-    @Value
-    public static class CvcClass {
-        private String cvc;
+    public static String getYearSymbol() {
+        return "w!";
     }
 
-    public static CvcClass getCvcVal() {
+    public static String getCvcVal() {
         Random random = new Random();
         int rand = random.nextInt(4);
         String cvcVal[] = {"121", "115", "243", "604"};
-        return new CvcClass(cvcVal[rand]);
+        return cvcVal[rand];
     }
 
-    public static CvcClass getCvcLessQuantity() {
-        return new CvcClass("5");
+    public static String getCvcLessQuantity() {
+        return "5";
     }
-    public static CvcClass getCvcMoreQuantity() {
-        return new CvcClass("0001");
+    public static String getCvcMoreQuantity() {
+        return "0001";
     }
-    public static CvcClass getCvcSymbol() {
-        return new CvcClass("r-");
+    public static String getCvcSymbol() {
+        return "r-";
     }
 }

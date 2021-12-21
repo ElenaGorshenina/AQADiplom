@@ -20,12 +20,21 @@ public class PaymentByCard {
     private SelenideElement year = $(By.cssSelector("input[placeholder='22']"));
     private SelenideElement cardowner = $(By.xpath("//span[text()='Владелец']/..//input"));
     private SelenideElement cvc = $(By.cssSelector("input[placeholder='999']"));
-    private SelenideElement button = $(By.cssSelector("[placeholder='Продолжить']"));
+    private SelenideElement button = $(By.xpath("//span[text()='Продолжить']/..//"));
     private SelenideElement approved = $(byText("Успешно"));
     private SelenideElement errorWindow = $(byText("Успешно"));
 
     public PaymentByCard() {
         formPayment.shouldBe(Condition.visible);
+    }
+
+    public void fillingFormPayment(DataHelper.NumberCardClass setNumberCard, String setMonth, String setYear, String setCardowner, String setCvc) {
+        numberCard.setValue(setNumberCard.getNumberCard());
+        month.setValue(setMonth);
+        year.setValue(setYear);
+        cardowner.setValue(setCardowner);
+        cvc.setValue(setCvc);
+        button.click();
     }
 
     private SelenideElement numberCardSub = $(By.cssSelector("[placeholder='0000 0000 0000 0000'] .input__sub"));
@@ -39,10 +48,10 @@ public class PaymentByCard {
     }
 
     public void approved() {
-        approved.shouldHave(exactText("Операция одобрена Банком."));
+        approved.shouldHave(exactText("Операция одобрена Банком."), appear);
     }
     public void errorCard() {
-        errorWindow.shouldHave(exactText("Ошибка! Банк отказал в проведении операции."));
+        errorWindow.shouldHave(exactText("Ошибка! Банк отказал в проведении операции."), appear);
     }
 
     public void numberCardRequiredToFill () {
