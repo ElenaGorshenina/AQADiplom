@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.Value;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Random;
 
@@ -30,7 +32,10 @@ public class DataHelper {
         return new NumberCardClass("4");
     }
     public static NumberCardClass getNumberCardMoreQuantity() {
-        return new NumberCardClass("4444 4444 4444 4442 4");
+        return new NumberCardClass("4444 4444 4444 4444 4");
+    }
+    public static NumberCardClass getNumberCardEmpty() {
+        return new NumberCardClass("");
     }
 
      public static String getCardownerValid() {
@@ -46,6 +51,9 @@ public class DataHelper {
     }
     public static String getCardownerSymbol() {
         return "1,ю";
+    }
+    public static String getCardownerEmpty() {
+        return "";
     }
 
     public static String getMonthVal() {
@@ -67,11 +75,20 @@ public class DataHelper {
     public static String getMonthSymbol() {
         return "s,";
     }
+    public static String getMonthEmpty() {
+        return "";
+    }
 
     public static String getYearVal() {
         Random random = new Random();
         int rand = random.nextInt(4);
-        String yearVal[] = {"21", "22", "23", "24"};
+        String yearVal[] = {"22", "23", "24", "25"};
+        return yearVal[rand];
+    }
+    public static String getYearNoVal() {
+        Random random = new Random();
+        int rand = random.nextInt(3);
+        String yearVal[] = {"20", "19", "18"};
         return yearVal[rand];
     }
     public static String getYearZero() {
@@ -81,10 +98,13 @@ public class DataHelper {
         return "2";
     }
     public static String getYearMoreQuantity() {
-        return "022";
+        return "222";
     }
     public static String getYearSymbol() {
         return "w!";
+    }
+    public static String getYearEmpty() {
+        return "";
     }
 
     public static String getCvcVal() {
@@ -102,5 +122,8 @@ public class DataHelper {
     }
     public static String getCvcSymbol() {
         return "r-";
+    }
+    public static String getCvcEmpty() {
+        return "";
     }
 }
