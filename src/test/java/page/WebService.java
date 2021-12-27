@@ -22,9 +22,9 @@ public class WebService {
         return new PaymentByCard();
     }
 
-    public СreditCard creditCard() {
+    public CreditCard creditCard() {
         creditButton.click();
-        return new СreditCard();
+        return new CreditCard();
     }
 }
 

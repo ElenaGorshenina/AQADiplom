@@ -20,13 +20,15 @@ public class BDclass {
 
     @BeforeEach
     public static void deleteTable(){
-        var delBD = "DELETE FROM *";
+        var delPaymentByCard = "DELETE FROM PaymentByCard";
+        var delCreditCard = "DELETE FROM CreditCard";
         var runner = new QueryRunner();
-//        try (var conn = getConn()) {
-//            var del = runner.query(conn, delBD, ?);
-//        }
-//        catch (SQLException exception) {
-//            exception.printStackTrace();
-//        }
+        try (var conn = getConn()) {
+            runner.update(conn, delPaymentByCard);
+            runner.update(conn, delCreditCard);
+        }
+        catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 }
