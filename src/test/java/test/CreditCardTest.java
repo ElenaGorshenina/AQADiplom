@@ -1,10 +1,12 @@
 package test;
 
+import data.BDclass;
 import data.DataHelper;
 import org.junit.jupiter.api.Test;
 import page.WebService;
 
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreditCardTest {
 
@@ -21,7 +23,8 @@ public class CreditCardTest {
         var setCvc = DataHelper.getCvcVal();
         creditCard.fillingFormCredit(setNumberCard, setMonth, setYear, setCardowner, setCvc);
         creditCard.approved();
-//проверка записи в бд
+        var creditStatus = BDclass.statusCreditCard();
+        assertEquals("APPROVED", creditStatus);
     }
 
     //2. Отправка формы "Оплата по карте" с вводом невалидного номера карты.
@@ -95,11 +98,11 @@ public class CreditCardTest {
         var webService = open("http://185.119.57.9:8080", WebService.class);
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
-        //var setMonth = DataHelper.getMonthNoVal();
-        var setYear = DataHelper.getYearVal();
+        var setMonth = DataHelper.getMonthNoVal();
+        var setYear = DataHelper.getYearNow();
         var setCardowner = DataHelper.getCardownerValid();
         var setCvc = DataHelper.getCvcVal();
-        //creditCard.fillingFormCredit(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        creditCard.fillingFormCredit(setNumberCard, setMonth, setYear, setCardowner, setCvc);
         creditCard.expiredDate();
     }
 

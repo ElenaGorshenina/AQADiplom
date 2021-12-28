@@ -8,6 +8,7 @@ import page.WebService;
 
 import static com.codeborne.selenide.Selenide.open;
 import static data.DataHelper.getNumberCardApproved;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaymentByCardTest {
 
@@ -24,7 +25,8 @@ public class PaymentByCardTest {
         var setCvc = DataHelper.getCvcVal();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
         paymentByCard.approved();
-//проверка записи в бд
+        var paymentStatus = BDclass.statusPaymentByCard();
+        assertEquals("APPROVED", paymentStatus);
     }
 
     //2. Отправка формы "Оплата по карте" с вводом невалидного номера карты.
@@ -39,7 +41,8 @@ public class PaymentByCardTest {
         var setCvc = DataHelper.getCvcVal();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
         paymentByCard.errorCard();
-//проверка записи в бд
+        var paymentStatus = BDclass.statusPaymentByCard();
+        assertEquals("DECLINED", paymentStatus);
     }
 
     //3. Отправка формы "Оплата по карте" с неверным форматом полей (ввод букв, цифр, символов)
@@ -98,11 +101,11 @@ public class PaymentByCardTest {
         var webService = open("http://185.119.57.9:8080", WebService.class);
         var paymentByCard = webService.paymentByCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
-        //var setMonth = DataHelper.getMonthNoVal();
-        var setYear = DataHelper.getYearVal();
+        var setMonth = DataHelper.getMonthNoVal();
+        var setYear = DataHelper.getYearNow();
         var setCardowner = DataHelper.getCardownerValid();
         var setCvc = DataHelper.getCvcVal();
-        //paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
         paymentByCard.expiredDate();
     }
 

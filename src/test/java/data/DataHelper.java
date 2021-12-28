@@ -57,10 +57,11 @@ public class DataHelper {
     }
 
     public static String getMonthVal() {
-        Random random = new Random();
-        int rand = random.nextInt(12);
-        String monthVal[] = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
-        return monthVal[rand];
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("MM"));
+    }
+
+    public static String getMonthNoVal() {
+        return LocalDate.now().plusMonths(-1).format(DateTimeFormatter.ofPattern("MM"));
     }
 
     public static String getMonthZero() {
@@ -80,17 +81,15 @@ public class DataHelper {
     }
 
     public static String getYearVal() {
-        Random random = new Random();
-        int rand = random.nextInt(4);
-        String yearVal[] = {"22", "23", "24", "25"};
-        return yearVal[rand];
+        return LocalDate.now().plusYears(1).format(DateTimeFormatter.ofPattern("yy"));
     }
     public static String getYearNoVal() {
-        Random random = new Random();
-        int rand = random.nextInt(3);
-        String yearVal[] = {"20", "19", "18"};
-        return yearVal[rand];
+        return LocalDate.now().minusYears(2).format(DateTimeFormatter.ofPattern("yy"));
     }
+    public static String getYearNow() {
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
+    }
+
     public static String getYearZero() {
         return "00";
     }
