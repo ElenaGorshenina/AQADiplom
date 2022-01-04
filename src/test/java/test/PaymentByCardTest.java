@@ -32,6 +32,7 @@ public class PaymentByCardTest {
     //2. Отправка формы "Оплата по карте" с вводом невалидного номера карты.
     @Test
     void noValidCardPaymentTest () {
+        BDclass.deleteTable();
         var webService = open("http://185.119.57.9:8080", WebService.class);
         var paymentByCard = webService.paymentByCard();
         var setNumberCard = DataHelper.getNumberCardDeclined();

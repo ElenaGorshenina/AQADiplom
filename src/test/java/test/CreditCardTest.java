@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreditCardTest {
 
-    //1. Валидная оплата по карте
+    //1. Валидная покупка в кредит
     @Test
     void validCardCreditTest () {
-        //BDclass.deleteTable();
+        BDclass.deleteTable();
         var webService = open("http://185.119.57.9:8080", WebService.class);
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -27,9 +27,10 @@ public class CreditCardTest {
         assertEquals("APPROVED", creditStatus);
     }
 
-    //2. Отправка формы "Оплата по карте" с вводом невалидного номера карты.
+    //2. Отправка формы "Кредит по данным карты" с вводом невалидного номера карты.
     @Test
     void noValidCardCreditTest () {
+        BDclass.deleteTable();
         var webService = open("http://185.119.57.9:8080", WebService.class);
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardDeclined();
@@ -42,7 +43,7 @@ public class CreditCardTest {
 //проверка записи в бд
     }
 
-    //3. Отправка формы "Оплата по карте" с неверным форматом полей (ввод букв, цифр, символов)
+    //3. Отправка формы "Кредит по данным карты" с неверным форматом полей (ввод букв, цифр, символов)
     @Test
     void wrongFormatSymbolCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -60,7 +61,7 @@ public class CreditCardTest {
         creditCard.cvcSubRequiredToFill();
     }
 
-    //4. Отправка формы "Оплата по карте" с неверным форматом полей (количество символов меньше)
+    //4. Отправка формы "Кредит по данным карты" с неверным форматом полей (количество символов меньше)
     @Test
     void wrongFormatLessQuantityCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -78,7 +79,7 @@ public class CreditCardTest {
         creditCard.cvcSubWrongFormat();
     }
 
-    //5. Отправка формы "Оплата по карте" с неверным форматом полей (количество символов больше)
+    //5. Отправка формы "Кредит по данным карты" с неверным форматом полей (количество символов больше)
     @Test
     void wrongFormatMoreQuantityCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -92,7 +93,7 @@ public class CreditCardTest {
         creditCard.numberCardMoreQuantity();
     }
 
-    //6. Отправка формы "Оплата по карте" с истекшим сроком карты по месяцу.
+    //6. Отправка формы "Кредит по данным карты" с истекшим сроком карты по месяцу.
     @Test
     void CreditByCardExpiredMonthTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -106,9 +107,10 @@ public class CreditCardTest {
         creditCard.expiredDate();
     }
 
-    //7. Отправка формы "Оплата по карте" с истекшим сроком карты по году.
+    //7. Отправка формы "Кредит по данным карты" с истекшим сроком карты по году.
     @Test
     void CreditByCardExpiredYearTest () {
+        BDclass.deleteTable();
         var webService = open("http://185.119.57.9:8080", WebService.class);
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -120,7 +122,7 @@ public class CreditCardTest {
         creditCard.expiredDate();
     }
 
-    //8. Отправка формы "Оплата по карте" с неверным форматом месяца (ввод нулей)
+    //8. Отправка формы "Кредит по данным карты" с неверным форматом месяца (ввод нулей)
     @Test
     void MonthZeroCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -134,7 +136,7 @@ public class CreditCardTest {
         creditCard.wrongFormat();
     }
 
-    //9. Отправка формы "Оплата по карте" с неверным форматом года (ввод нулей)
+    //9. Отправка формы "Кредит по данным карты" с неверным форматом года (ввод нулей)
     @Test
     void YearZeroCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -148,7 +150,7 @@ public class CreditCardTest {
         creditCard.expiredDate();
     }
 
-    //10. Отправка формы "Оплата по карте" с пустым полем "Номер карты"
+    //10. Отправка формы "Кредит по данным карты" с пустым полем "Номер карты"
     @Test
     void NumberCardEmptyCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -162,7 +164,7 @@ public class CreditCardTest {
         creditCard.obligatory();
     }
 
-    //11. Отправка формы "Оплата по карте" с пустым полем "Месяц"
+    //11. Отправка формы "Кредит по данным карты" с пустым полем "Месяц"
     @Test
     void MonthEmptyCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -176,7 +178,7 @@ public class CreditCardTest {
         creditCard.obligatory();
     }
 
-    //12. Отправка формы "Оплата по карте" с пустым полем "Год"
+    //12. Отправка формы "Кредит по данным карты" с пустым полем "Год"
     @Test
     void YearEmptyCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -190,7 +192,7 @@ public class CreditCardTest {
         creditCard.obligatory();
     }
 
-    //13. Отправка формы "Оплата по карте" с пустым полем "Владелец"
+    //13. Отправка формы "Кредит по данным карты" с пустым полем "Владелец"
     @Test
     void CardownerEmptyCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -204,7 +206,7 @@ public class CreditCardTest {
         creditCard.obligatory();
     }
 
-    //14. Отправка формы "Оплата по карте" с пустым полем "CVC/CVV"
+    //14. Отправка формы "Кредит по данным карты" с пустым полем "CVC/CVV"
     @Test
     void CvcEmptyCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
