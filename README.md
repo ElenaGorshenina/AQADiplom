@@ -26,15 +26,39 @@
 
 ### Установка и запуск
 
-1. Необходимо клонировать репозиторий командой git clone https://github.com/ElenaGorshenina/AQADiplom.git;
+1. Открыть программу PuTTY;
 
-2. Запустить контейнеры в скопированном проекте;
+2. В окне "Host Name (or IP address)" ввести адрес 185.119.57.9, нажать кнопку Open;
 
-3. Запустить jar-файл;
+3. В появившемся окне ввести логин/пароль (student/netologystudent);
 
-4. Открыть тестовый класс PaymentByCardTest и запустить тесты;
+4. Необходимо клонировать репозиторий командой `git clone https://github.com/ElenaGorshenina/AQADiplom.git`;
 
-5. Открыть тестовый класс CreditCardTest и запустить тесты.
+5. Перейти в папку командой `cd AQADiplom`;
+
+6. Создать контейнеры в скопированном проекте `docker-compose up -d`;
+
+7. Запустить контейнеры командой `docker-compose start`;
+
+8. Запустить jar-файл с базой данных MySQL командой `java "-Ddb.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar`;
+
+9. Открыть IntelliJ IDEA Ultimate;
+
+10. Открыть тестовый класс PaymentByCardTest и запустить тесты;
+
+11. Открыть тестовый класс CreditCardTest и запустить тесты;
+
+12. Для запуска jar-файла с базой данных PostgreSQL необходимо перейти в виртуальную машину и воспользоваться командой `java "-Ddb.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar`;
+
+13. Перейти в IntelliJ IDEA Ultimate;
+
+14. Открыть тестовый класс PaymentByCardTest и запустить тесты;
+
+15. Открыть тестовый класс CreditCardTest и запустить тесты;
+
+16. Перейти в виртуальную машину и остановить контейнеры командой `docker-compose stop`;
+
+17. Удалить контейнеры командой `docker-compose down`.
 
 ## Лицензия
 
