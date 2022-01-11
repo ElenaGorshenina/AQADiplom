@@ -11,21 +11,10 @@ import java.sql.SQLException;
 
 public class BDclass {
 
-//    private static Connection getConn() {
-//        try {
-//            return DriverManager.getConnection("jdbc:mysql://185.119.57.9:3306/app", "app", "pass");
-//           // return DriverManager.getConnection("jdbc:postgresql://185.119.57.9:5432/app", "app", "pass");
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
-
     private static Connection getConn() throws SQLException {
         return DriverManager.getConnection(
-                System.getProperty("url"),
-                System.getProperty("db.login"),
+                System.getProperty("db.url"),
+                System.getProperty("db.user"),
                 System.getProperty("db.password")
         );
     }
@@ -63,9 +52,8 @@ public class BDclass {
     public static String statusCreditCard() {
         var status = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";
         var runner = new QueryRunner();
-        try (var conn = getConn()){
-            String statusCredit = runner.query(conn, status, new ScalarHandler<>());
+        try (var conn = getConn()) {
+            return runner.query(conn, status, new ScalarHandler<>());
         }
-        return null;
     }
 }

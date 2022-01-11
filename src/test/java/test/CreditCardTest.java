@@ -2,7 +2,10 @@ package test;
 
 import data.BDclass;
 import data.DataHelper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import page.CreditCard;
+import page.PaymentByCard;
 import page.WebService;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -10,12 +13,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreditCardTest {
 
+    @BeforeEach
+    void setUp(){
+        open("http://localhost:8080");
+    }
+
+    @BeforeEach
+    static void deleteTable() {
+        BDclass.deleteTable();
+    }
+
     //1. Валидная покупка в кредит
     @Test
     void validCardCreditTest () {
-        BDclass.deleteTable();
-        var webService = open("http://185.119.57.9:8080", WebService.class);
-        var creditCard = webService.creditCard();
+//        BDclass.deleteTable();
+//        var webService = open("http://185.119.57.9:8080", WebService.class);
+//        var creditCard = webService.creditCard();
+        var webService = new WebService();
+        var creditCard = new CreditCard();
+        webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
         var setMonth = DataHelper.getMonthVal();
         var setYear = DataHelper.getYearVal();
@@ -30,9 +46,12 @@ public class CreditCardTest {
     //2. Отправка формы "Кредит по данным карты" с вводом невалидного номера карты.
     @Test
     void noValidCardCreditTest () {
-        BDclass.deleteTable();
-        var webService = open("http://185.119.57.9:8080", WebService.class);
-        var creditCard = webService.creditCard();
+//        BDclass.deleteTable();
+//        var webService = open("http://185.119.57.9:8080", WebService.class);
+//        var creditCard = webService.creditCard();
+        var webService = new WebService();
+        var creditCard = new CreditCard();
+        webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardDeclined();
         var setMonth = DataHelper.getMonthVal();
         var setYear = DataHelper.getYearVal();
@@ -43,7 +62,7 @@ public class CreditCardTest {
 //проверка записи в бд
     }
 
-    //3. Отправка формы "Кредит по данным карты" с неверным форматом полей (ввод букв, цифр, символов)
+/*    //3. Отправка формы "Кредит по данным карты" с неверным форматом полей (ввод букв, цифр, символов)
     @Test
     void wrongFormatSymbolCreditTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -218,5 +237,5 @@ public class CreditCardTest {
         var setCvc = DataHelper.getCvcEmpty();
         creditCard.fillingFormCredit(setNumberCard, setMonth, setYear, setCardowner, setCvc);
         creditCard.obligatory();
-    }
+    } */
 }

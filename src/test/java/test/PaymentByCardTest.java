@@ -2,6 +2,7 @@ package test;
 
 import data.BDclass;
 import data.DataHelper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.PaymentByCard;
 import page.WebService;
@@ -12,12 +13,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaymentByCardTest {
 
+    @BeforeEach
+    void setUp(){
+        open("http://localhost:8080");
+    }
+
+    @BeforeEach
+    static void deleteTable() {
+        BDclass.deleteTable();
+    }
+
     //1. Валидная оплата по карте
     @Test
     void validCardPaymentTest () {
-        BDclass.deleteTable();
-        var webService = open("http://185.119.57.9:8080", WebService.class);
-        var paymentByCard = webService.paymentByCard();
+//        BDclass.deleteTable();
+//        var webService = open("http://185.119.57.9:8080", WebService.class);
+        var webService = new WebService();
+        var paymentByCard = new PaymentByCard();
+        webService.paymentByCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
         var setMonth = DataHelper.getMonthVal();
         var setYear = DataHelper.getYearVal();
@@ -32,9 +45,12 @@ public class PaymentByCardTest {
     //2. Отправка формы "Оплата по карте" с вводом невалидного номера карты.
     @Test
     void noValidCardPaymentTest () {
-        BDclass.deleteTable();
-        var webService = open("http://185.119.57.9:8080", WebService.class);
-        var paymentByCard = webService.paymentByCard();
+//        BDclass.deleteTable();
+//        var webService = open("http://185.119.57.9:8080", WebService.class);
+//        var paymentByCard = webService.paymentByCard();
+        var webService = new WebService();
+        var paymentByCard = new PaymentByCard();
+        webService.paymentByCard();
         var setNumberCard = DataHelper.getNumberCardDeclined();
         var setMonth = DataHelper.getMonthVal();
         var setYear = DataHelper.getYearVal();
@@ -46,7 +62,7 @@ public class PaymentByCardTest {
         assertEquals("DECLINED", paymentStatus);
     }
 
-    //3. Отправка формы "Оплата по карте" с неверным форматом полей (ввод букв, цифр, символов)
+/*    //3. Отправка формы "Оплата по карте" с неверным форматом полей (ввод букв, цифр, символов)
     @Test
     void wrongFormatSymbolPaymentTest () {
         var webService = open("http://185.119.57.9:8080", WebService.class);
@@ -220,5 +236,5 @@ public class PaymentByCardTest {
         var setCvc = DataHelper.getCvcEmpty();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
         paymentByCard.obligatory();
-    }
+    } */
 }
