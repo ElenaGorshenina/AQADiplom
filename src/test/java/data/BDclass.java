@@ -50,10 +50,14 @@ public class BDclass {
 
     @SneakyThrows
     public static String statusCreditCard() {
-        var status = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";
-        var runner = new QueryRunner();
-        try (var conn = getConn()) {
-            return runner.query(conn, status, new ScalarHandler<>());
+        try (var conn = getConn();
+             var countStmt = conn.createStatement()) {
+            var status = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";
+            var resultSet = countStmt.executeQuery(status);
+            if (resultSet.next()) {
+                return resultSet.getString("status");
+            }
         }
+        return null;
     }
 }
