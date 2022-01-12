@@ -40,25 +40,21 @@
 
 7. Запустить контейнеры командой `docker-compose start`;
 
-8. Запустить jar-файл с базой данных MySQL командой `java "-Ddb.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar`;
+8. Запустить jar-файл с базой данных MySQL командой `java "-Dspring.datasource.url=jdbc:mysql://185.119.57.9:3306/app" -jar artifacts/aqa-shop.jar`;
 
 9. Открыть IntelliJ IDEA Ultimate;
 
-10. Открыть тестовый класс PaymentByCardTest и запустить тесты;
+10. Открыть терминал и запустить тесты командой `./gradlew clean test "-Ddb.url=jdbc:mysql://185.119.57.9:3306/app"`;
 
-11. Открыть тестовый класс CreditCardTest и запустить тесты;
+11. Для запуска jar-файла с базой данных PostgreSQL необходимо перейти в виртуальную машину и воспользоваться командой `java "-Dspring.datasource.url=jdbc:postgresql://185.119.57.9:5432/app" -jar artifacts/aqa-shop.jar`;
 
-12. Для запуска jar-файла с базой данных PostgreSQL необходимо перейти в виртуальную машину и воспользоваться командой `java "-Ddb.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar`;
+12. Перейти в IntelliJ IDEA Ultimate;
 
-13. Перейти в IntelliJ IDEA Ultimate;
+13. Открыть терминал и запустить тесты командой `./gradlew clean test "-Ddb.url=jdbc:postgresql://185.119.57.9:5432/app"`;
 
-14. Открыть тестовый класс PaymentByCardTest и запустить тесты;
+14. Перейти в виртуальную машину и остановить контейнеры командой `docker-compose stop`;
 
-15. Открыть тестовый класс CreditCardTest и запустить тесты;
-
-16. Перейти в виртуальную машину и остановить контейнеры командой `docker-compose stop`;
-
-17. Удалить контейнеры командой `docker-compose down`.
+15. Удалить контейнеры командой `docker-compose down`.
 
 ## Лицензия
 

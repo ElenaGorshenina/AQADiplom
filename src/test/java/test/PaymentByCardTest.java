@@ -21,7 +21,7 @@ public class PaymentByCardTest {
         BDclass.deleteTable();
     }
 
-/*    //1. Валидная оплата по карте
+    //1. Валидная оплата по карте
     @Test
     void validCardPaymentTest () {
         var webService = new WebService();
@@ -53,57 +53,49 @@ public class PaymentByCardTest {
         assertEquals("DECLINED", paymentStatus);
     }
 
-    //3. Отправка формы "Оплата по карте" с неверным форматом полей (ввод букв, цифр, символов)
+    //3. Отправка формы "Оплата по карте" с неверным форматом поля "Номер карты" (ввод букв, цифр, символов)
     @Test
-    void wrongFormatSymbolPaymentTest () {
+    void wrongFormatSymbolCardPaymentTest () {
         var webService = new WebService();
         var paymentByCard = webService.paymentByCard();
         var setNumberCard = DataHelper.getNumberCardSymbol();
-        var setMonth = DataHelper.getMonthSymbol();
-        var setYear = DataHelper.getYearSymbol();
-        var setCardowner = DataHelper.getCardownerSymbol();
-        var setCvc = DataHelper.getCvcSymbol();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcVal();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
-        paymentByCard.numberCardRequiredToFill();
-        paymentByCard.monthSubRequiredToFill();
-        paymentByCard.yearSubRequiredToFill();
-        paymentByCard.cardownerSubRequiredToFill();
-        paymentByCard.cvcSubRequiredToFill();
+        paymentByCard.wrongFormat();
     }
 
-    //4. Отправка формы "Оплата по карте" с неверным форматом полей (количество символов меньше)
+   //4. Отправка формы "Оплата по карте" с неверным форматом поля "Номер карты" (количество символов меньше)
     @Test
-    void wrongFormatLessQuantityPaymentTest () {
+    void wrongFormatLessQuantityCardPaymentTest () {
         var webService = new WebService();
         var paymentByCard = webService.paymentByCard();
         var setNumberCard = DataHelper.getNumberCardLessQuantity();
-        var setMonth = DataHelper.getMonthLessQuantity();
-        var setYear = DataHelper.getYearLessQuantity();
-        var setCardowner = DataHelper.getCardownerLessQuantity();
-        var setCvc = DataHelper.getCvcLessQuantity();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcVal();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
-        paymentByCard.numberCardWrongFormat();
-        paymentByCard.monthSubWrongFormat();
-        paymentByCard.yearSubWrongFormat();
-        paymentByCard.cardownerSubWrongFormat();
-        paymentByCard.cvcSubWrongFormat();
+        paymentByCard.wrongFormat();
     }
 
-    //5. Отправка формы "Оплата по карте" с неверным форматом полей (количество символов больше)
+    //5. Отправка формы "Оплата по карте" с неверным форматом поля "Номер карты" (количество символов больше)
     @Test
-    void wrongFormatMoreQuantityPaymentTest () {
+    void wrongFormatMoreQuantityCardPaymentTest () {
         var webService = new WebService();
         var paymentByCard = webService.paymentByCard();
         var setNumberCard = DataHelper.getNumberCardMoreQuantity();
-        var setMonth = DataHelper.getMonthMoreQuantity();
-        var setYear = DataHelper.getYearMoreQuantity();
-        var setCardowner = DataHelper.getCardownerMoreQuantity();
-        var setCvc = DataHelper.getCvcMoreQuantity();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcVal();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
-        paymentByCard.numberCardMoreQuantity();
+        paymentByCard.errorCard();
     }
 
-    //6. Отправка формы "Оплата по карте" с истекшим сроком карты по месяцу.
+   //6. Отправка формы "Оплата по карте" с истекшим сроком карты по месяцу.
     @Test
     void PaymentByCardExpiredMonthTest () {
         var webService = new WebService();
@@ -227,5 +219,173 @@ public class PaymentByCardTest {
         var setCvc = DataHelper.getCvcEmpty();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
         paymentByCard.obligatory();
-    }*/
+    }
+
+    //15. Отправка формы "Оплата по карте" с неверным форматом поля "Месяц" (ввод букв, цифр, символов)
+    @Test
+    void wrongFormatSymbolMonthPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthSymbol();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcVal();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.wrongFormat();
+    }
+
+    //16. Отправка формы "Оплата по карте" с неверным форматом поля "Год" (ввод букв, цифр, символов)
+    @Test
+    void wrongFormatSymbolYearPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearSymbol();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcVal();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.wrongFormat();
+    }
+
+    //17. Отправка формы "Оплата по карте" с неверным форматом поля "Владелец" (ввод букв, цифр, символов)
+    @Test
+    void wrongFormatSymbolCardownerPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerSymbol();
+        var setCvc = DataHelper.getCvcVal();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.wrongFormat();
+    }
+
+    //18. Отправка формы "Оплата по карте" с неверным форматом поля "CVC/CVV" (ввод букв, цифр, символов)
+    @Test
+    void wrongFormatSymbolCvcPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcSymbol();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.wrongFormat();
+    }
+
+    //19. Отправка формы "Оплата по карте" с неверным форматом поля "Месяц" (количество символов меньше)
+    @Test
+    void wrongFormatLessQuantityMonthPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthLessQuantity();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcVal();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.wrongFormat();
+    }
+
+    //20. Отправка формы "Оплата по карте" с неверным форматом поля "Год" (количество символов меньше)
+    @Test
+    void wrongFormatLessQuantityYearPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearLessQuantity();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcVal();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.wrongFormat();
+    }
+
+    //21. Отправка формы "Оплата по карте" с неверным форматом поля "Владелец" (количество символов меньше)
+    @Test
+    void wrongFormatLessQuantityCardownerPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerLessQuantity();
+        var setCvc = DataHelper.getCvcVal();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.wrongFormat();
+    }
+
+    //22. Отправка формы "Оплата по карте" с неверным форматом поля "CVC/CVV" (количество символов меньше)
+    @Test
+    void wrongFormatLessQuantityCvcPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcLessQuantity();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.wrongFormat();
+    }
+
+    //23. Отправка формы "Оплата по карте" с неверным форматом поля "Месяц" (количество символов больше)
+    @Test
+    void wrongFormatMoreQuantityMonthPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthMoreQuantity();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcVal();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.approved();
+    }
+
+    //24. Отправка формы "Оплата по карте" с неверным форматом поля "Год" (количество символов больше)
+    @Test
+    void wrongFormatMoreQuantityYearPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearMoreQuantity();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcVal();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.approved();
+    }
+
+    //25. Отправка формы "Оплата по карте" с неверным форматом поля "Владелец" (количество символов больше)
+    @Test
+    void wrongFormatMoreQuantityCardownerPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerMoreQuantity();
+        var setCvc = DataHelper.getCvcVal();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.numberCardMoreQuantity();
+    }
+
+    //26. Отправка формы "Оплата по карте" с неверным форматом поля "CVC/CVV" (количество символов больше)
+    @Test
+    void wrongFormatMoreQuantityCvcPaymentTest () {
+        var webService = new WebService();
+        var paymentByCard = webService.paymentByCard();
+        var setNumberCard = DataHelper.getNumberCardApproved();
+        var setMonth = DataHelper.getMonthVal();
+        var setYear = DataHelper.getYearVal();
+        var setCardowner = DataHelper.getCardownerValid();
+        var setCvc = DataHelper.getCvcMoreQuantity();
+        paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
+        paymentByCard.approved();
+    }
 }
