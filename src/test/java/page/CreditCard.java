@@ -36,49 +36,11 @@ public class CreditCard {
         button.click();
     }
 
-    private SelenideElement numberCardSub = $$(".input__sub").get(0);
-    private SelenideElement monthSub = $$(".input__sub").get(1);
-    private SelenideElement yearSub = $$(".input__sub").get(2);
-    private SelenideElement cardownerSub = $$(".input__sub").get(3);
-    private SelenideElement cvcSub = $$(".input__sub").get(4);
-
     public void approved() {
         approved.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
     public void errorCard() {
         errorWindow.shouldBe(Condition.visible, Duration.ofSeconds(10));
-    }
-
-    public void numberCardRequiredToFill () {
-        numberCardSub.shouldHave(exactText("Поле обязательно для заполнения"));
-    }
-    public void monthSubRequiredToFill () {
-        monthSub.shouldHave(exactText("Поле обязательно для заполнения"));
-    }
-    public void yearSubRequiredToFill () {
-        yearSub.shouldHave(exactText("Поле обязательно для заполнения"));
-    }
-    public void cardownerSubRequiredToFill () {
-        cardownerSub.shouldHave(exactText("Поле обязательно для заполнения"));
-    }
-    public void cvcSubRequiredToFill () {
-        cvcSub.shouldHave(exactText("Поле обязательно для заполнения"));
-    }
-
-    public void numberCardWrongFormat () {
-        numberCardSub.shouldHave(exactText("Неверный формат"));
-    }
-    public void monthSubWrongFormat () {
-        monthSub.shouldHave(exactText("Неверный формат"));
-    }
-    public void yearSubWrongFormat () {
-        yearSub.shouldHave(exactText("Неверный формат"));
-    }
-    public void cardownerSubWrongFormat () {
-        cardownerSub.shouldHave(exactText("Неверный формат"));
-    }
-    public void cvcSubWrongFormat () {
-        cvcSub.shouldHave(exactText("Неверный формат"));
     }
 
     public void numberCardMoreQuantity () {
