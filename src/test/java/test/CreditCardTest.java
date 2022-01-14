@@ -23,7 +23,7 @@ public class CreditCardTest {
 
     //1. Валидная покупка в кредит
     @Test
-    void validCardCreditTest () {
+    void shouldBeStatusApprovedCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -39,7 +39,7 @@ public class CreditCardTest {
 
     //2. Отправка формы "Кредит по данным карты" с вводом невалидного номера карты.
     @Test
-    void noValidCardCreditTest () {
+    void shouldBeStatusDeclinedCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardDeclined();
@@ -54,7 +54,7 @@ public class CreditCardTest {
 
     //3. Отправка формы "Кредит по данным карты" с неверным форматом поля "Номер карты" (ввод букв, цифр, символов)
     @Test
-    void wrongFormatSymbolCardCreditTest () {
+    void inputWrongFormatSymbolInFieldCardCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardSymbol();
@@ -68,7 +68,7 @@ public class CreditCardTest {
 
     //4. Отправка формы "Кредит по данным карты" с неверным форматом поля "Номер карты" (количество символов меньше)
     @Test
-    void wrongFormatLessQuantityCardCreditTest () {
+    void inputWrongFormatLessQuantityInFieldCardCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardLessQuantity();
@@ -82,7 +82,7 @@ public class CreditCardTest {
 
     //5. Отправка формы "Кредит по данным карты" с неверным форматом поля "Номер карты" (количество символов больше)
     @Test
-    void wrongFormatMoreQuantityCardCreditTest () {
+    void inputWrongFormatMoreQuantityInFieldCardCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardMoreQuantity();
@@ -96,7 +96,7 @@ public class CreditCardTest {
 
     //6. Отправка формы "Кредит по данным карты" с истекшим сроком карты по месяцу.
     @Test
-    void CreditByCardExpiredMonthTest () {
+    void shouldBeExpiredMonthCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -110,7 +110,7 @@ public class CreditCardTest {
 
     //7. Отправка формы "Кредит по данным карты" с истекшим сроком карты по году.
     @Test
-    void CreditByCardExpiredYearTest () {
+    void shouldBeExpiredYearCreditTest () {
         BDclass.deleteTable();
         var webService = new WebService();
         var creditCard = webService.creditCard();
@@ -125,7 +125,7 @@ public class CreditCardTest {
 
     //8. Отправка формы "Кредит по данным карты" с неверным форматом месяца (ввод нулей)
     @Test
-    void MonthZeroCreditTest () {
+    void inputZeroInFieldMonthCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -139,7 +139,7 @@ public class CreditCardTest {
 
     //9. Отправка формы "Кредит по данным карты" с неверным форматом года (ввод нулей)
     @Test
-    void YearZeroCreditTest () {
+    void inputZeroInFieldYearCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -153,7 +153,7 @@ public class CreditCardTest {
 
     //10. Отправка формы "Кредит по данным карты" с пустым полем "Номер карты"
     @Test
-    void NumberCardEmptyCreditTest () {
+    void NshouldBeEmptyFieldNumberCardCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardEmpty();
@@ -167,7 +167,7 @@ public class CreditCardTest {
 
     //11. Отправка формы "Кредит по данным карты" с пустым полем "Месяц"
     @Test
-    void MonthEmptyCreditTest () {
+    void shouldBeEmptyFieldMonthCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -181,7 +181,7 @@ public class CreditCardTest {
 
     //12. Отправка формы "Кредит по данным карты" с пустым полем "Год"
     @Test
-    void YearEmptyCreditTest () {
+    void shouldBeEmptyFieldYearCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -195,7 +195,7 @@ public class CreditCardTest {
 
     //13. Отправка формы "Кредит по данным карты" с пустым полем "Владелец"
     @Test
-    void CardownerEmptyCreditTest () {
+    void shouldBeEmptyFieldCardownerCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -209,7 +209,7 @@ public class CreditCardTest {
 
     //14. Отправка формы "Кредит по данным карты" с пустым полем "CVC/CVV"
     @Test
-    void CvcEmptyCreditTest () {
+    void shouldBeEmptyFieldCvcCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -223,7 +223,7 @@ public class CreditCardTest {
 
     //15. Отправка формы "Кредит по данным карты" с неверным форматом поля "Месяц" (ввод букв, цифр, символов)
     @Test
-    void wrongFormatSymbolMonthCreditTest () {
+    void inputWrongFormatSymbolInFieldMonthCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -237,7 +237,7 @@ public class CreditCardTest {
 
     //16. Отправка формы "Кредит по данным карты" с неверным форматом поля "Год" (ввод букв, цифр, символов)
     @Test
-    void wrongFormatSymbolYearCreditTest () {
+    void inputWrongFormatSymbolInFieldYearCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -251,7 +251,7 @@ public class CreditCardTest {
 
     //17. Отправка формы "Кредит по данным карты" с неверным форматом поля "Владелец" (ввод букв, цифр, символов)
     @Test
-    void wrongFormatSymbolCardownerCreditTest () {
+    void inputWrongFormatSymbolInFieldCardownerCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -265,7 +265,7 @@ public class CreditCardTest {
 
     //18. Отправка формы "Кредит по данным карты" с неверным форматом поля "CVC/CVV" (ввод букв, цифр, символов)
     @Test
-    void wrongFormatSymbolCvcCreditTest () {
+    void inputWrongFormatSymbolInFieldCvcCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -279,7 +279,7 @@ public class CreditCardTest {
 
     //19. Отправка формы "Кредит по данным карты" с неверным форматом поля "Месяц" (количество символов меньше)
     @Test
-    void wrongFormatLessQuantityMonthCreditTest () {
+    void inputWrongFormatLessQuantityInFieldMonthCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -293,7 +293,7 @@ public class CreditCardTest {
 
     //20. Отправка формы "Кредит по данным карты" с неверным форматом поля "Год" (количество символов меньше)
     @Test
-    void wrongFormatLessQuantityYearCreditTest () {
+    void inputWrongFormatLessQuantityInFieldYearCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -307,7 +307,7 @@ public class CreditCardTest {
 
     //21. Отправка формы "Кредит по данным карты" с неверным форматом поля "Владелец" (количество символов меньше)
     @Test
-    void wrongFormatLessQuantityCardownerCreditTest () {
+    void inputWrongFormatLessQuantityInFieldCardownerCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -321,7 +321,7 @@ public class CreditCardTest {
 
     //22. Отправка формы "Кредит по данным карты" с неверным форматом поля "CVC/CVV" (количество символов меньше)
     @Test
-    void wrongFormatLessQuantityCvcCreditTest () {
+    void inputWrongFormatLessQuantityInFieldCvcCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -335,7 +335,7 @@ public class CreditCardTest {
 
     //23. Отправка формы "Кредит по данным карты" с неверным форматом поля "Месяц" (количество символов больше)
     @Test
-    void wrongFormatMoreQuantityMonthCreditTest () {
+    void inputWrongFormatMoreQuantityInFieldMonthCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -349,7 +349,7 @@ public class CreditCardTest {
 
     //24. Отправка формы "Кредит по данным карты" с неверным форматом поля "Год" (количество символов больше)
     @Test
-    void wrongFormatMoreQuantityYearCreditTest () {
+    void inputWrongFormatMoreQuantityInFieldYearCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -363,7 +363,7 @@ public class CreditCardTest {
 
     //25. Отправка формы "Кредит по данным карты" с неверным форматом поля "Владелец" (количество символов больше)
     @Test
-    void wrongFormatMoreQuantityCardownerCreditTest () {
+    void inputWrongFormatMoreQuantityInFieldCardownerCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
@@ -377,7 +377,7 @@ public class CreditCardTest {
 
     //26. Отправка формы "Кредит по данным карты" с неверным форматом поля "CVC/CVV" (количество символов больше)
     @Test
-    void wrongFormatMoreQuantityCvcCreditTest () {
+    void inputWrongFormatMoreQuantityInFieldCvcCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardApproved();
