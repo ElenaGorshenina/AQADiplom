@@ -1,3 +1,7 @@
+# Документация
+
+[Планировании автоматизации тестирования](https://github.com/ElenaGorshenina/AQADiplom/blob/master/docs/Plan.md)
+
 # Тестирование веб-сервиса "Путешествие дня"
 
 Тестирование приложения, которое предлагает купить тур по определённой цене с помощью двух способов:
@@ -40,22 +44,32 @@
 
 7. Запустить контейнеры командой `docker-compose start`;
 
-8. Запустить jar-файл с базой данных MySQL командой `java "-Dspring.datasource.url=jdbc:mysql://185.119.57.9:3306/app" -jar artifacts/aqa-shop.jar`;
+8. Запустить jar-файл с базой данных MySQL командой 
+
+`java "-Dspring.datasource.url=jdbc:mysql://185.119.57.9:3306/app" -jar artifacts/aqa-shop.jar`;
 
 9. Открыть IntelliJ IDEA Ultimate;
 
-10. Открыть терминал и запустить тесты командой `./gradlew clean test "-Ddb.url=jdbc:mysql://185.119.57.9:3306/app"`;
+10. Открыть терминал и запустить тесты командой 
 
-11. Для запуска jar-файла с базой данных PostgreSQL необходимо перейти в виртуальную машину и воспользоваться командой `java "-Dspring.datasource.url=jdbc:postgresql://185.119.57.9:5432/app" -jar artifacts/aqa-shop.jar`;
+`./gradlew clean test "-Ddb.url=jdbc:mysql://185.119.57.9:3306/app"`;
+
+11. Для запуска jar-файла с базой данных PostgreSQL необходимо перейти в виртуальную машину и воспользоваться командой 
+
+`java "-Dspring.datasource.url=jdbc:postgresql://185.119.57.9:5432/app" -jar artifacts/aqa-shop.jar`;
 
 12. Перейти в IntelliJ IDEA Ultimate;
 
-13. Открыть терминал и запустить тесты командой `./gradlew clean test "-Ddb.url=jdbc:postgresql://185.119.57.9:5432/app"`;
+13. Открыть терминал и запустить тесты командой 
 
-14. Перейти в виртуальную машину и остановить контейнеры командой `docker-compose stop`;
+`./gradlew clean test "-Ddb.url=jdbc:postgresql://185.119.57.9:5432/app"`;
 
-15. Удалить контейнеры командой `docker-compose down`.
+14. Сгенерировать отчет с помощью фреймворка Allure
 
-## Лицензия
+`./gradlew allureReport`
 
-Опишите условия лицензии
+`./gradlew allureServe`;
+
+15. Перейти в виртуальную машину и остановить контейнеры командой `docker-compose stop`;
+
+16. Удалить контейнеры командой `docker-compose down`.
