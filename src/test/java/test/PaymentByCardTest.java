@@ -260,7 +260,7 @@ public class PaymentByCardTest {
         var setCardowner = DataHelper.getCardownerValid();
         var setCvc = DataHelper.getCvcVal();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
-        paymentByCard.wrongFormat();
+        paymentByCard.obligatory();
     }
 
     //17. Отправка формы "Оплата по карте" с неверным форматом поля "Владелец" (ввод букв, цифр, символов)
@@ -274,7 +274,7 @@ public class PaymentByCardTest {
         var setCardowner = DataHelper.getCardownerSymbol();
         var setCvc = DataHelper.getCvcVal();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
-        paymentByCard.wrongFormat();
+        paymentByCard.obligatory();
     }
 
     //18. Отправка формы "Оплата по карте" с неверным форматом поля "CVC/CVV" (ввод букв, цифр, символов)
@@ -288,7 +288,7 @@ public class PaymentByCardTest {
         var setCardowner = DataHelper.getCardownerValid();
         var setCvc = DataHelper.getCvcSymbol();
         paymentByCard.fillingFormPayment(setNumberCard, setMonth, setYear, setCardowner, setCvc);
-        paymentByCard.wrongFormat();
+        paymentByCard.obligatory();
     }
 
     //19. Отправка формы "Оплата по карте" с неверным форматом поля "Месяц" (количество символов меньше)
