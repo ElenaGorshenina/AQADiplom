@@ -19,7 +19,7 @@
 
 #### Отчет Allure
 
-![Allure](C:\IdeaProjectsDiplom\issues\allure.png)
+![img.png](img.png)
 
 Процентр положительных тестов
 
