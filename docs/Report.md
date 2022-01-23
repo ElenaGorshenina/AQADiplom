@@ -23,19 +23,19 @@
 
 Процентр положительных тестов
 
-![positive](C:\IdeaProjectsDiplom\issues\positive.png) 
+![positive](https://user-images.githubusercontent.com/84250372/150686901-a6707078-6595-493f-8b67-7f291be08a87.png)
 
 Процентр отрицательных тестов
 
-![negative](C:\IdeaProjectsDiplom\issues\negative.png)
+![negative](https://user-images.githubusercontent.com/84250372/150686918-ab62a85f-9e00-472c-98bc-0010c3e39d69.png)
 
 Тесты покупка в кредит
 
-![credit](C:\IdeaProjectsDiplom\issues\credit.png)
+![credit](https://user-images.githubusercontent.com/84250372/150686937-039e6c85-05b1-41c3-9662-d04bc327c628.png)
 
 Тесты оплата по карте
 
-![payment](C:\IdeaProjectsDiplom\issues\payment.png)
+![payment](https://user-images.githubusercontent.com/84250372/150686947-f185eb8a-5518-4bd5-9045-90ea51c70981.png)
 
 #### Общие рекомендации
 
