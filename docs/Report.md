@@ -19,23 +19,23 @@
 
 #### Отчет Allure
 
-![](C:\IdeaProjectsDiplom\issues\аллюр1.png)
+![Allure](C:\IdeaProjectsDiplom\issues\allure.png)
 
 Процентр положительных тестов
 
-![](C:\IdeaProjectsDiplom\issues\полож30.png) 
+![positive](C:\IdeaProjectsDiplom\issues\positive.png) 
 
 Процентр отрицательных тестов
 
-![](C:\IdeaProjectsDiplom\issues\отриц22.png)
+![negative](C:\IdeaProjectsDiplom\issues\negative.png)
 
 Тесты покупка в кредит
 
-![](C:\IdeaProjectsDiplom\issues\кредит.png)
+![credit](C:\IdeaProjectsDiplom\issues\credit.png)
 
 Тесты оплата по карте
 
-![](C:\IdeaProjectsDiplom\issues\покупка.png)
+![payment](C:\IdeaProjectsDiplom\issues\payment.png)
 
 #### Общие рекомендации
 
