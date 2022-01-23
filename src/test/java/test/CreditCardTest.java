@@ -167,7 +167,7 @@ public class CreditCardTest {
 
     //10. Отправка формы "Кредит по данным карты" с пустым полем "Номер карты"
     @Test
-    void NshouldBeEmptyFieldNumberCardCreditTest () {
+    void shouldBeEmptyFieldNumberCardCreditTest () {
         var webService = new WebService();
         var creditCard = webService.creditCard();
         var setNumberCard = DataHelper.getNumberCardEmpty();

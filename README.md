@@ -1,6 +1,9 @@
 # Документация
 
 [Планировании автоматизации тестирования](https://github.com/ElenaGorshenina/AQADiplom/blob/master/docs/Plan.md)
+[Отчётные документы по итогам тестирования](https://github.com/ElenaGorshenina/AQADiplom/blob/master/docs/Report.md)
+[Отчётные документы по итогам автоматизации](https://github.com/ElenaGorshenina/AQADiplom/blob/master/docs/Summary.md)
+
 
 # Тестирование веб-сервиса "Путешествие дня"
 
