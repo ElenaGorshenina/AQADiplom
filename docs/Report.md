@@ -19,15 +19,23 @@
 
 #### Отчет Allure
 
-![Отчет Allure](https://photos.app.goo.gl/3NRNiyjk8atYkq4TA)
+![](C:\IdeaProjectsDiplom\issues\аллюр1.png)
 
-![positive](https://photos.app.goo.gl/9Vdg8T7eqQxSJDYS9)
+Процентр положительных тестов
 
-![negative](https://photos.app.goo.gl/hY3wWPzMYTG2h4RaA)
+![](C:\IdeaProjectsDiplom\issues\полож30.png) 
 
-![CreditCard](https://photos.app.goo.gl/AsvqhyVWrdampJh98)
+Процентр отрицательных тестов
 
-![PaymentCard](https://photos.app.goo.gl/qjCXMyYm493fCKm38)
+![](C:\IdeaProjectsDiplom\issues\отриц22.png)
+
+Тесты покупка в кредит
+
+![](C:\IdeaProjectsDiplom\issues\кредит.png)
+
+Тесты оплата по карте
+
+![](C:\IdeaProjectsDiplom\issues\покупка.png)
 
 #### Общие рекомендации
 
